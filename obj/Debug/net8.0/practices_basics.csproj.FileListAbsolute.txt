@@ -1,0 +1,14 @@
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.AssemblyInfoInputs.cache
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.AssemblyInfo.cs
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.csproj.CoreCompileInputs.cache
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/bin/Debug/net8.0/practices_basics
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/bin/Debug/net8.0/practices_basics.deps.json
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/bin/Debug/net8.0/practices_basics.runtimeconfig.json
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/bin/Debug/net8.0/practices_basics.dll
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/bin/Debug/net8.0/practices_basics.pdb
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.dll
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/refint/practices_basics.dll
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.pdb
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.genruntimeconfig.cache
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/ref/practices_basics.dll
