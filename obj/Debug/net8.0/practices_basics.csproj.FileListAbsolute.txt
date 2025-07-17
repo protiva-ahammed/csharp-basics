@@ -12,3 +12,4 @@
 /Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.pdb
 /Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.genruntimeconfig.cache
 /Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/ref/practices_basics.dll
+/Users/ahmed/Downloads/java-code/c_sharp_basic_codings/practices_basics/obj/Debug/net8.0/practices_basics.sourcelink.json
