@@ -7,7 +7,7 @@ namespace practices_basics.MultipleThreadings
     public class MultipleThreadingv1
     {
 
-        public  void CountDesc()
+        public void CountDesc()
         {
             for (int i = 10; i > 0; i--)
             {
@@ -17,20 +17,20 @@ namespace practices_basics.MultipleThreadings
             Console.WriteLine("from thread1 completed . ");
 
         }
-        
-         public  void CountAsc()
+
+        public void CountAsc()
         {
             for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine("from thread2 ", i);
-                                Thread.Sleep(100);
+                Thread.Sleep(100);
 
             }
-            
-                                        Console.WriteLine("from thread2 completed . ");
+
+            Console.WriteLine("from thread2 completed . ");
 
         }
 
-}
-    
+    }
+
 }

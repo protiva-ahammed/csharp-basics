@@ -21,20 +21,20 @@ namespace practices_basics
             MultipleThreadingv1 obj = new MultipleThreadingv1();
             Thread thread1 = new Thread(obj.CountDesc);
 
-                        Thread thread2 = new Thread(obj.CountAsc);
+            Thread thread2 = new Thread(obj.CountAsc);
             thread1.Start();
             thread2.Start();
 
-                                        Console.WriteLine("from main thread completed . ");
+            Console.WriteLine("from main thread completed . ");
 
             Console.ReadKey();
 
         }
 
-      
 
-       
-       
+
+
+
 
 
     }
