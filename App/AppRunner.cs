@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using practices_basics.Enums;
 using practices_basics.Generics;
 using practices_basics.MultipleThreadings;
 
@@ -11,6 +12,7 @@ namespace practices_basics.App
         {
             MultiThreading();
             Generics();
+            UseOfEnums();
 
         }
         private void MultiThreading()
@@ -51,6 +53,14 @@ namespace practices_basics.App
             // obj.Dispplay(s);--> results in error while type is different
             obj.Dispplay(a);
             obj.Dispplay(s);
+
+        }
+
+        private void UseOfEnums()
+        {
+            Console.WriteLine(Commands.LightUp.ToString());
+            Console.WriteLine(Commands.ShowAmount.ToString());
+            Console.WriteLine((int)Commands.LightUp);
 
         }
         
