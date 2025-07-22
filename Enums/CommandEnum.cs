@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace practices_basics.Enums
 {
 
@@ -7,6 +9,7 @@ namespace practices_basics.Enums
 
         enum Commands
         {
+            [Description("Z")]
             Initialize,//0
 
             GeneralInitialize,

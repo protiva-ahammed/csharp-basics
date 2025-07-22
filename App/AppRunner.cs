@@ -1,4 +1,5 @@
 using System.Security.Cryptography.X509Certificates;
+using practices_basics.Constants;
 using practices_basics.Enums;
 using practices_basics.Generics;
 using practices_basics.MultipleThreadings;
@@ -13,6 +14,7 @@ namespace practices_basics.App
             MultiThreading();
             Generics();
             UseOfEnums();
+            UseOfConstantsErrMsg();
 
         }
         private void MultiThreading()
@@ -61,7 +63,18 @@ namespace practices_basics.App
             Console.WriteLine(Commands.LightUp.ToString());
             Console.WriteLine(Commands.ShowAmount.ToString());
             Console.WriteLine((int)Commands.LightUp);
+            Console.WriteLine(Commands.Initialize);
 
+        }
+
+        private void UseOfConstantsErrMsg ()
+        {
+            int a ;
+            string s = Console.ReadLine();
+            a = int.Parse(s);
+            if (a < AppConstants.THRESHOLD)
+                throw new NotImplementedException(ErrorMessages.NEGATIVE_NUMBER);
+            Console.WriteLine("Entered  number : {0}",a);
         }
         
         
