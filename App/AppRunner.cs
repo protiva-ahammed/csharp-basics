@@ -1,7 +1,9 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography.X509Certificates;
 using practices_basics.Constants;
 using practices_basics.Enums;
 using practices_basics.Generics;
+using practices_basics.Models;
 using practices_basics.MultipleThreadings;
 
 namespace practices_basics.App
@@ -15,6 +17,7 @@ namespace practices_basics.App
             Generics();
             UseOfEnums();
             UseOfConstantsErrMsg();
+            UseOfGetSet();
 
         }
         private void MultiThreading()
@@ -74,9 +77,22 @@ namespace practices_basics.App
             a = int.Parse(s);
             if (a < AppConstants.THRESHOLD)
                 throw new NotImplementedException(ErrorMessages.NEGATIVE_NUMBER);
-            Console.WriteLine("Entered  number : {0}",a);
+            Console.WriteLine("Entered  positive number : {0}",a);
         }
-        
-        
+
+        private void UseOfGetSet()
+        {
+            PickingArranger pickProduct = new PickingArranger();
+            ProductPriceData productPriceData = new ProductPriceData();
+            Console.WriteLine("Entered number to be set and get : ");
+
+            pickProduct.Amount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(pickProduct.Amount + " setted value ");
+            Console.WriteLine("Entered product price amount to be set and get : ");
+
+            productPriceData.Price = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(productPriceData.Price  + " setted value ");
+
+        }
     }
 }
