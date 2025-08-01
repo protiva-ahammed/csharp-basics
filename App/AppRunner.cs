@@ -5,7 +5,7 @@ using practices_basics.Enums;
 using practices_basics.Generics;
 using practices_basics.Models;
 using practices_basics.MultipleThreadings;
-
+using practices_basics.ToDoList;
 namespace practices_basics.App
 {
 
@@ -18,6 +18,8 @@ namespace practices_basics.App
             UseOfEnums();
             UseOfConstantsErrMsg();
             UseOfGetSet();
+            ToDoList();
+
 
         }
         private void MultiThreading()
@@ -70,14 +72,14 @@ namespace practices_basics.App
 
         }
 
-        private void UseOfConstantsErrMsg ()
+        private void UseOfConstantsErrMsg()
         {
-            int a ;
+            int a;
             string s = Console.ReadLine();
             a = int.Parse(s);
             if (a < AppConstants.THRESHOLD)
                 throw new NotImplementedException(ErrorMessages.NEGATIVE_NUMBER);
-            Console.WriteLine("Entered  positive number : {0}",a);
+            Console.WriteLine("Entered  positive number : {0}", a);
         }
 
         private void UseOfGetSet()
@@ -91,7 +93,44 @@ namespace practices_basics.App
             Console.WriteLine("Entered product price amount to be set and get : ");
 
             productPriceData.Price = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(productPriceData.Price  + " setted value ");
+            Console.WriteLine(productPriceData.Price + " setted value ");
+
+        }
+
+        private void ToDoList()
+        {
+            
+        bool running = true;
+        while (running)
+            {
+                Console.WriteLine("Let Start to schedule ");
+                Console.WriteLine("1. Add a task  ");
+                Console.WriteLine("2. View the task Log ");
+                Console.WriteLine("3. Mark the task as completed ");
+                Console.WriteLine("4. Exist ");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        ToDoLists.AddTask();
+                        break;
+                    case "2":
+                        ToDoLists.ViewTasks();
+                        break;
+                    case "3":
+                        ToDoLists.CompleteTask();
+                        break;
+                    case "4":
+                        running = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid selection. Please try again!");
+                        break;
+
+                }
+            }
 
         }
     }
