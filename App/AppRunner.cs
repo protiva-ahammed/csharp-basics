@@ -14,13 +14,13 @@ namespace practices_basics.App
     {
         public void Run()
         {
-            // MultiThreading();
-            // Generics();
-            // UseOfEnums();
-            // UseOfConstantsErrMsg();
-            // UseOfGetSet();
-            // ToDoList();
-            // LearnInheritance();
+            MultiThreading();
+            Generics();
+            UseOfEnums();
+            UseOfConstantsErrMsg();
+            UseOfGetSet();
+            ToDoList();
+            LearnInheritance();
             LearnPolymorphism();
 
 
