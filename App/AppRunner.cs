@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography.X509Certificates;
 using practices_basics.Constants;
+using practices_basics.DesignPatterns.CreationalPatterns;
 using practices_basics.Enums;
 using practices_basics.Generics;
 using practices_basics.Models;
@@ -14,14 +15,15 @@ namespace practices_basics.App
     {
         public void Run()
         {
-            MultiThreading();
-            Generics();
-            UseOfEnums();
-            UseOfConstantsErrMsg();
-            UseOfGetSet();
-            ToDoList();
-            LearnInheritance();
-            LearnPolymorphism();
+            // MultiThreading();
+            // Generics();
+            // UseOfEnums();
+            // UseOfConstantsErrMsg();
+            // UseOfGetSet();
+            // ToDoList();
+            // LearnInheritance();
+            // LearnPolymorphism();
+            LearnDesignPatternsSingleton();
 
 
         }
@@ -188,5 +190,16 @@ namespace practices_basics.App
             Instrument instrument = new Instrument();
             instrument.Play();
         }
-    }
+
+        private void LearnDesignPatternsSingleton()
+        {
+            Database db1 = Database.GetInstance();
+            Database db2 = Database.GetInstance();
+
+            db1.Connect();
+            Console.WriteLine(object.ReferenceEquals(db1, db2)); // Outputs: True
+        }   
+            
+        }
+    
 }
