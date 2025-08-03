@@ -20,7 +20,8 @@ namespace practices_basics.App
             // UseOfConstantsErrMsg();
             // UseOfGetSet();
             // ToDoList();
-            LearnInheritance();
+            // LearnInheritance();
+            LearnPolymorphism();
 
 
         }
@@ -164,6 +165,28 @@ namespace practices_basics.App
             // toSwimChildObj.ToSwimInfo(); //X
             // To call ToSwimInfo(), must downcast it back
             ((ToSwim)toSwimChildObj).ToSwimInfo();
+        }
+
+        private void LearnPolymorphism()
+        {
+
+
+            // assigning a child object (new Piano())
+            //  to a base class reference (Instrument)
+            // always allowed because every Piano is an Instrument
+            Instrument piano = new Piano(); // upcasting
+
+            // Not every Instrument is a Piano.
+            // Piano piano = new Instrument();// Compile-time error
+            piano.Play();
+
+            //interface 
+            Guitar guitar = new Guitar();
+            guitar.Play();
+
+            //base class 
+            Instrument instrument = new Instrument();
+            instrument.Play();
         }
     }
 }
