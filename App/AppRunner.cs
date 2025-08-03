@@ -5,6 +5,7 @@ using practices_basics.Enums;
 using practices_basics.Generics;
 using practices_basics.Models;
 using practices_basics.MultipleThreadings;
+using practices_basics.OOP;
 using practices_basics.ToDoList;
 namespace practices_basics.App
 {
@@ -13,12 +14,13 @@ namespace practices_basics.App
     {
         public void Run()
         {
-            MultiThreading();
-            Generics();
-            UseOfEnums();
-            UseOfConstantsErrMsg();
-            UseOfGetSet();
-            ToDoList();
+            // MultiThreading();
+            // Generics();
+            // UseOfEnums();
+            // UseOfConstantsErrMsg();
+            // UseOfGetSet();
+            // ToDoList();
+            LearnInheritance();
 
 
         }
@@ -99,9 +101,9 @@ namespace practices_basics.App
 
         private void ToDoList()
         {
-            
-        bool running = true;
-        while (running)
+
+            bool running = true;
+            while (running)
             {
                 Console.WriteLine("Let Start to schedule ");
                 Console.WriteLine("1. Add a task  ");
@@ -132,6 +134,36 @@ namespace practices_basics.App
                 }
             }
 
+        }
+
+        private void LearnInheritance()
+        {
+
+            //own obj
+            //Can access both base and child methods
+            ToSwim toSwimObj = new ToSwim(23, 30, 34);
+            toSwimObj.PoolInfo();//method inherited from base
+            toSwimObj.ToSwimInfo();//own method
+
+            // derived class down type-casting 
+
+            //Only allowed if PoolBase implements ToSwim.
+
+            //Otherwise, this will throw a ClassCastException at runtime.
+            // ToSwim toSwimChildObj = (ToSwim) new PoolBase(23, 32);
+
+
+            // Upcasting: Assign ToSwim object to PoolBase reference
+            //Object type: ToSwim
+            //Reference type: PoolBase (upcast)
+            PoolBase toSwimChildObj = new ToSwim(23, 45, 57);
+            toSwimChildObj.chlorineLevel = 45;// own child class properties
+            toSwimChildObj.PoolInfo();
+
+            //Compile-time error: not accessible via base class
+            // toSwimChildObj.ToSwimInfo(); //X
+            // To call ToSwimInfo(), must downcast it back
+            ((ToSwim)toSwimChildObj).ToSwimInfo();
         }
     }
 }
