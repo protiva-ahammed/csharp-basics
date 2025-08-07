@@ -1,5 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
+using practices_basics.AsynchronousFunctionalities;
 using practices_basics.Constants;
 using practices_basics.DesignPatterns.CreationalPatterns;
 using practices_basics.Enums;
@@ -13,7 +15,7 @@ namespace practices_basics.App
 
     public class AppRunner
     {
-        public void Run()
+        public async Task Run()
         {
             // MultiThreading();
             // Generics();
@@ -23,10 +25,13 @@ namespace practices_basics.App
             // ToDoList();
             // LearnInheritance();
             // LearnPolymorphism();
-            LearnDesignPatternsSingleton();
+            // LearnDesignPatternsSingleton();
+              await AsyncProgramming();
 
 
         }
+
+       
         private void MultiThreading()
         {
 
@@ -198,6 +203,14 @@ namespace practices_basics.App
 
             db1.Connect();
             Console.WriteLine(object.ReferenceEquals(db1, db2)); // Outputs: True
+        }
+
+
+        private static async Task AsyncProgramming()
+        {
+            AsyncCodings program = new AsyncCodings();
+            await program.DowloadDataAsync();
+            Console.WriteLine("Asynchronous program running completed!!");
         }   
             
         }
