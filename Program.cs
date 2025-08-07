@@ -11,18 +11,12 @@ namespace practices_basics
     class Program
     {
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
 
-            new AppRunner().Run();
+            await new AppRunner().Run();
 
         }
-
-
-
-
-
-
 
     }
 }
