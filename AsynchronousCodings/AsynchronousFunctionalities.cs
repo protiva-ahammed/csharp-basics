@@ -1,29 +1,31 @@
 namespace practices_basics.AsynchronousFunctionalities
 {
-    // public async Task SimulateDelay()
-    // {
-    //     // time consuming tasks ex: data retriving from db, wating for response
-    //     await Task.Delay(5000);
-    //     Console.WriteLine("Operation completed after 5 s .");
-    // }
 
-    // public async Task ReadfilesAsync(string filePath)
-    // {
-    //     using (StreamReader reader = new StreamReader(filePath));
-    //     {
-    //         string content = await reader.ReadToEndAsync();
-
-    //         Console.WriteLine(content);
-    //     }
-    // }
-    public class AsyncCodings{
-         public async Task DowloadDataAsync()
+    public class AsyncCodings
+    {
+        public async Task DownloadDataAsync()
         {
-
-            Console.WriteLine("Download started..");
-            await Task.Delay(5000);
-            Console.WriteLine("Download completed! ");
+            try
+            {
+                Console.WriteLine("Download started 1 ...");
+                // throw new InvalidOperationException("Simulated download error.");
+                await Task.Delay(3000);
+                Console.WriteLine("Download 1 completed.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred: " + ex.Message);
+            }
         }
+
+          public async Task DownloadDataAsync2()
+        {
+            Console.WriteLine("Download 2 started...");
+            await Task.Delay(2000);
+            Console.WriteLine("Download 2 completed.");
+        }
+        
+   
     }
 
    

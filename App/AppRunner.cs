@@ -26,9 +26,13 @@ namespace practices_basics.App
             // LearnInheritance();
             // LearnPolymorphism();
             // LearnDesignPatternsSingleton();
-              await AsyncProgramming();
+            // await AsyncProgramming();
 
-
+            AsyncCodings  program = new AsyncCodings();
+            Task task1 = program.DownloadDataAsync();
+            Task task2 = program.DownloadDataAsync2();
+            await Task.WhenAll(task1, task2);
+            Console.WriteLine("All downloads completed.");
         }
 
        
@@ -204,15 +208,6 @@ namespace practices_basics.App
             db1.Connect();
             Console.WriteLine(object.ReferenceEquals(db1, db2)); // Outputs: True
         }
-
-
-        private static async Task AsyncProgramming()
-        {
-            AsyncCodings program = new AsyncCodings();
-            await program.DowloadDataAsync();
-            Console.WriteLine("Asynchronous program running completed!!");
-        }   
             
         }
-    
 }
