@@ -4,88 +4,185 @@ using System.Linq;
 
 class LibraryManager
 {
+
+    private const int MaxBooks = 5;
+    private const int MaxBorrowLimit = 3;
+
+    private static List<string> books = new List<string>();
+    private static Dictionary<string, List<string>> userBorrowedBooks = new Dictionary<string, List<string>>();
+
     public static void LibraryManage()
     {
-        const int MaxBooks = 5;
-        List<string> books = new List<string>();
-
         while (true)
         {
-            Console.WriteLine("\nWould you like to add or remove a book? (add/remove/exit)");
+            Console.WriteLine("\nChoose an action: add / remove / search / borrow / return / exit");
             string action = Console.ReadLine()?.Trim().ToLower();
 
             switch (action)
             {
                 case "add":
-                    if (books.Count >= MaxBooks)
-                    {
-                        Console.WriteLine("The library is full. No more books can be added.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter the title of the book to add:");
-                        string newBook = Console.ReadLine()?.Trim();
-
-                        if (string.IsNullOrWhiteSpace(newBook))
-                        {
-                            Console.WriteLine("Invalid book title.");
-                        }
-                        else if (books.Any(b => b.Equals(newBook, StringComparison.OrdinalIgnoreCase)))
-                        {
-                            Console.WriteLine("This book is already in the library.");
-                        }
-                        else
-                        {
-                            books.Add(newBook);
-                            Console.WriteLine($"'{newBook}' added to the library.");
-                        }
-                    }
+                    AddBook();
                     break;
 
                 case "remove":
-                    if (books.Count == 0)
-                    {
-                        Console.WriteLine("The library is empty. No books to remove.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Enter the title of the book to remove:");
-                        string removeBook = Console.ReadLine()?.Trim();
+                    RemoveBook();
+                    break;
 
-                        var bookToRemove = books.FirstOrDefault(b => b.Equals(removeBook, StringComparison.OrdinalIgnoreCase));
-                        if (bookToRemove != null)
-                        {
-                            books.Remove(bookToRemove);
-                            Console.WriteLine($"'{bookToRemove}' removed from the library.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Book not found.");
-                        }
-                    }
+                case "search":
+                    SearchBook();
+                    break;
+
+                case "borrow":
+                    BorrowBook();
+                    break;
+
+                case "return":
+                    ReturnBook();
                     break;
 
                 case "exit":
                     return;
 
                 default:
-                    Console.WriteLine("Invalid action. Please type 'add', 'remove', or 'exit'.");
+                    Console.WriteLine("Invalid action. Try again.");
                     break;
             }
 
-            // Display the list of books
-            Console.WriteLine("\nAvailable books:");
-            if (books.Count == 0)
+            DisplayBooks();
+        }
+    }
+
+    private static void AddBook()
+    {
+        if (books.Count >= MaxBooks)
+        {
+            Console.WriteLine("Library is full.");
+            return;
+        }
+
+        Console.WriteLine("Enter book title to add:");
+        string title = Console.ReadLine()?.Trim();
+
+        if (string.IsNullOrWhiteSpace(title))
+        {
+            Console.WriteLine("Invalid title.");
+        }
+        else if (books.Any(b => b.Equals(title, StringComparison.OrdinalIgnoreCase)))
+        {
+            Console.WriteLine("Book already exists.");
+        }
+        else
+        {
+            books.Add(title);
+            Console.WriteLine($"'{title}' added.");
+        }
+    }
+
+    private static void RemoveBook()
+    {
+        Console.WriteLine("Enter book title to remove:");
+        string title = Console.ReadLine()?.Trim();
+
+        var book = books.FirstOrDefault(b => b.Equals(title, StringComparison.OrdinalIgnoreCase));
+        if (book != null)
+        {
+            books.Remove(book);
+            Console.WriteLine($"'{book}' removed.");
+        }
+        else
+        {
+            Console.WriteLine("Book not found.");
+        }
+    }
+
+    private static void SearchBook()
+    {
+        Console.WriteLine("Enter book title to search:");
+        string title = Console.ReadLine()?.Trim();
+
+        bool found = books.Any(b => b.Equals(title, StringComparison.OrdinalIgnoreCase));
+        Console.WriteLine(found ? $"'{title}' is available." : "Book not found.");
+    }
+
+    private static void BorrowBook()
+    {
+        Console.WriteLine("Enter your name:");
+        string user = Console.ReadLine()?.Trim();
+
+        if (string.IsNullOrWhiteSpace(user))
+        {
+            Console.WriteLine("Invalid user name.");
+            return;
+        }
+
+        if (!userBorrowedBooks.ContainsKey(user))
+        {
+            userBorrowedBooks[user] = new List<string>();
+        }
+
+        if (userBorrowedBooks[user].Count >= MaxBorrowLimit)
+        {
+            Console.WriteLine("Borrow limit reached.");
+            return;
+        }
+
+        Console.WriteLine("Enter book title to borrow:");
+        string title = Console.ReadLine()?.Trim();
+
+        var book = books.FirstOrDefault(b => b.Equals(title, StringComparison.OrdinalIgnoreCase));
+        if (book != null)
+        {
+            books.Remove(book);
+            userBorrowedBooks[user].Add(book);
+            Console.WriteLine($"'{book}' borrowed by {user}.");
+        }
+        else
+        {
+            Console.WriteLine("Book not available.");
+        }
+    }
+
+    private static void ReturnBook()
+    {
+        Console.WriteLine("Enter your name:");
+        string user = Console.ReadLine()?.Trim();
+
+        if (!userBorrowedBooks.ContainsKey(user) || userBorrowedBooks[user].Count == 0)
+        {
+            Console.WriteLine("No borrowed books found.");
+            return;
+        }
+
+        Console.WriteLine("Enter book title to return:");
+        string title = Console.ReadLine()?.Trim();
+
+        var book = userBorrowedBooks[user].FirstOrDefault(b => b.Equals(title, StringComparison.OrdinalIgnoreCase));
+        if (book != null)
+        {
+            userBorrowedBooks[user].Remove(book);
+            books.Add(book);
+            Console.WriteLine($"'{book}' returned by {user}.");
+        }
+        else
+        {
+            Console.WriteLine("You haven't borrowed this book.");
+        }
+    }
+
+    private static void DisplayBooks()
+    {
+        Console.WriteLine("\n📚 Available Books:");
+        if (books.Count == 0)
+        {
+            Console.WriteLine("No books in the library.");
+        }
+        else
+        {
+            foreach (var book in books)
             {
-                Console.WriteLine("No books currently in the library.");
-            }
-            else
-            {
-                foreach (var book in books)
-                {
-                    Console.WriteLine($"- {book}");
-                }
+                Console.WriteLine($"- {book}");
             }
         }
+    
     }
 }
