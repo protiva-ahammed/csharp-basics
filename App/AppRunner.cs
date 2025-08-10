@@ -15,27 +15,39 @@ namespace practices_basics.App
 
     public class AppRunner
     {
-        public async Task Run()
+        public async Task Running()
         {
-            // MultiThreading();
-            // Generics();
-            // UseOfEnums();
-            // UseOfConstantsErrMsg();
-            // UseOfGetSet();
-            // ToDoList();
-            // LearnInheritance();
-            // LearnPolymorphism();
-            // LearnDesignPatternsSingleton();
+            MultiThreading();
+            Generics();
+            UseOfEnums();
+            UseOfConstantsErrMsg();
+            UseOfGetSet();
+            ToDoList();
+            LearnInheritance();
+            LearnPolymorphism();
+            LearnDesignPatternsSingleton();
             // await AsyncProgramming();
 
-            AsyncCodings  program = new AsyncCodings();
+            AsyncCodings program = new AsyncCodings();
             Task task1 = program.DownloadDataAsync();
             Task task2 = program.DownloadDataAsync2();
             await Task.WhenAll(task1, task2);
             Console.WriteLine("All downloads completed.");
         }
 
-       
+        public static void Run()
+        {
+            LibraryManaging();
+        }
+
+
+        private static void LibraryManaging( )
+        {
+            LibraryManager.LibraryManage();
+        }
+
+      
+
         private void MultiThreading()
         {
 
@@ -208,6 +220,7 @@ namespace practices_basics.App
             db1.Connect();
             Console.WriteLine(object.ReferenceEquals(db1, db2)); // Outputs: True
         }
-            
-        }
+
+
+    }
 }
